@@ -5,33 +5,46 @@ public class Snake_n_Ladder {
         //System.out.println("Welcome to Snake_N_Ladder Computation Program");
         //UC1
 
-        // starting position of player
-        int startPosition = 0;
-        System.out.println(" Start position is: " + startPosition);
+        System.out.println("Player Exact Winning Position is: ");
 
-        //UC2
-        int diceNumber = (int) Math.floor(Math.random() * 10) % 6 + 1;
-        System.out.println("Dice Number is : " + diceNumber);
+//		constants for program
+        int WINNING_POSITION = 100;
+        int position = 0; // Initializing Variable
 
-        // to check option
-        int option = (int) Math.floor(Math.random() * 10) % 3;
-        System.out.println("Player option is : " + option);
+        // while loop use to execute Condition
+        while (position < WINNING_POSITION) {
 
-        switch (option) {
-            case 1:
-                startPosition = diceNumber + startPosition;
-                System.out.println("Ladder");
-                System.out.println("Position for the player after the ladder is : " + startPosition);
-                break;
+            // to roll a dice
+            int diceNumber = (int) Math.floor(Math.random() * 10) % 6 + 1;
+            System.out.println("DiceNumber is : " + diceNumber);
 
-            case 2:
-                startPosition = startPosition - diceNumber;
-                System.out.println("Snack");
-                System.out.println("Position for the player after the Snake is : " + startPosition);
-                break;
+            // check option after getting a diceNumber
+            int option = (int) Math.floor(Math.random() * 10) % 2;
+            System.out.println("Selected player option : " + option);
 
-            default:
-                System.out.println("No play");
+            switch (option) {
+                case 1:
+                    position = diceNumber + position;
+                    System.out.println("Ladder");
+                    if (position > 100) {
+                        position = 100;
+                        position = position - diceNumber;
+                    }
+                    System.out.println("Position for the player after the ladder is : " + position);
+                    break;
+
+                case 2:
+                    position = position - diceNumber;
+                    System.out.println("Snack");
+                    if (position < 0) {
+                        position = 0;
+                        System.out.println("Player restart from zero: ");
+                    }
+                    System.out.println("Position for the player after the Snake is : " + position);
+                    break;
+
+                default:
+                    System.out.println("No play");
         }
     }
 }
