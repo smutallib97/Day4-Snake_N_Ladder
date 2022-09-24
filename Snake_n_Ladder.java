@@ -8,5 +8,9 @@ public class Snake_n_Ladder {
         // starting position of player
         int startPosition = 0;
         System.out.println(" Start position is: " + startPosition);
+
+        //UC2
+        int diceNumber = (int) Math.floor(Math.random() * 10) % 6 + 1;
+        System.out.println("Dice Number is : " + diceNumber);
     }
 }
